@@ -1,0 +1,12 @@
+<nav class="side-nav">
+    <ul>
+        <li *ngFor="let menu of menus">
+            {{ menu.label }}
+            <ul>
+                <li *ngFor="let item of menu.items" (click)="onSelect(item)">
+                    <a [routerLink]="['/tab', formatApp(menu.label), formatModule(item)]">{{ item }}</a>
+                </li>
+            </ul>
+        </li>
+    </ul>
+</nav>

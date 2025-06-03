@@ -1,0 +1,11 @@
+version: '3.8'
+
+services:
+  mfe-nginx:
+    build:
+      context: .
+      dockerfile: nginx/Dockerfile
+    ports:
+      - "80:80"
+    container_name: angular-mfe-container
+    restart: unless-stopped

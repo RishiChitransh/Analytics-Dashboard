@@ -1,0 +1,38 @@
+<div class="dashboard">
+    <!-- Section 1: Tiles -->
+    <div class="tiles p-2 grid grid-cols-4 gap-4">
+        <div *ngFor="let tile of tiles" class="bg-blue-100 p-4 text-center rounded shadow">{{ tile.label }}: {{ tile.count }}</div>
+    </div>
+
+    <!-- Section 2: Filters -->
+    <p-panel header="Filters" toggleable collapsed="false" class="mt-4">
+        <p-tabView>
+            <p-tabPanel header="Saved Filters">
+                <p>Coming Soon...</p>
+            </p-tabPanel>
+            <p-tabPanel header="Active Filters">
+                <div class="p-fluid grid grid-cols-3 gap-3">
+                    <p-dropdown [(ngModel)]="filters.status" [options]="['Open', 'Closed']" placeholder="Status"></p-dropdown>
+                    <p-dropdown [(ngModel)]="filters.category" [options]="['Cat1', 'Cat2']" placeholder="Category"></p-dropdown>
+                    <p-dropdown [(ngModel)]="filters.dateRange" [options]="['Last Week', 'Last Month']" placeholder="Date Range"></p-dropdown>
+                </div>
+                <button pButton label="Apply" class="mt-3" (click)="applyFilters()"></button>
+            </p-tabPanel>
+        </p-tabView>
+    </p-panel>
+
+    <!-- Section 3: Widgets + Grid -->
+    <div class="mt-4 grid grid-cols-2 gap-4">
+        <div>
+            <div class="grid grid-cols-3 gap-3">
+                <div *ngFor="let widget of widgets" class="bg-green-100 p-3 text-center rounded shadow">{{ widget.title }}: {{ widget.value | number:'1.0-0' }}</div>
+            </div>
+        </div>
+        <div>
+            <ag-grid-angular style="width: 100%; height: 400px;" class="ag-theme-alpine"
+                             [rowData]="gridData"
+                             [columnDefs]="[{ field: 'id' }, { field: 'name' }, { field: 'status' }]">
+            </ag-grid-angular>
+        </div>
+    </div>
+</div>
