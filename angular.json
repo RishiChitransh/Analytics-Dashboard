@@ -9,21 +9,22 @@
       "sourceRoot": "apps/shell-app/src",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:browser",
+          "builder": "@angular/build:application",
           "options": {
-            "outputPath": "dist/shell-app",
+            "outputPath": {
+              "base": "dist/shell-app"
+            },
             "index": "apps/shell-app/src/index.html",
-            "main": "apps/shell-app/src/main.ts",
             "tsConfig": "apps/shell-app/tsconfig.app.json",
             "assets": ["apps/shell-app/src/favicon.ico", "apps/shell-app/src/assets"],
             "styles": ["apps/shell-app/src/styles.css"],
             "scripts": [],
-            "vendorChunk": true,
-            "allowedCommonJsDependencies": []
+            "allowedCommonJsDependencies": [],
+            "browser": "apps/shell-app/src/main.ts"
           }
         },
         "serve": {
-          "builder": "@angular-devkit/build-angular:dev-server",
+          "builder": "@angular/build:dev-server",
           "options": {
             "browserTarget": "shell-app:build"
           },
@@ -41,21 +42,22 @@
       "sourceRoot": "apps/child-app1/src",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:browser",
+          "builder": "@angular/build:application",
           "options": {
-            "outputPath": "dist/child-app1",
+            "outputPath": {
+              "base": "dist/child-app1"
+            },
             "index": "apps/child-app1/src/index.html",
-            "main": "apps/child-app1/src/main.ts",
             "tsConfig": "apps/child-app1/tsconfig.app.json",
             "assets": ["apps/child-app1/src/favicon.ico", "apps/child-app1/src/assets"],
             "styles": ["apps/child-app1/src/styles.css"],
             "scripts": [],
-            "vendorChunk": true,
-            "allowedCommonJsDependencies": []
+            "allowedCommonJsDependencies": [],
+            "browser": "apps/child-app1/src/main.ts"
           }
         },
         "serve": {
-          "builder": "@angular-devkit/build-angular:dev-server",
+          "builder": "@angular/build:dev-server",
           "options": {
             "browserTarget": "child-app1:build"
           },
@@ -73,21 +75,22 @@
       "sourceRoot": "apps/child-app2/src",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:browser",
+          "builder": "@angular/build:application",
           "options": {
-            "outputPath": "dist/child-app2",
+            "outputPath": {
+              "base": "dist/child-app2"
+            },
             "index": "apps/child-app2/src/index.html",
-            "main": "apps/child-app2/src/main.ts",
             "tsConfig": "apps/child-app2/tsconfig.app.json",
             "assets": ["apps/child-app2/src/favicon.ico", "apps/child-app2/src/assets"],
             "styles": ["apps/child-app2/src/styles.css"],
             "scripts": [],
-            "vendorChunk": true,
-            "allowedCommonJsDependencies": []
+            "allowedCommonJsDependencies": [],
+            "browser": "apps/child-app2/src/main.ts"
           }
         },
         "serve": {
-          "builder": "@angular-devkit/build-angular:dev-server",
+          "builder": "@angular/build:dev-server",
           "options": {
             "browserTarget": "child-app2:build"
           },
@@ -102,5 +105,31 @@
   },
   "cli": {
     "analytics": false
+  },
+  "schematics": {
+    "@schematics/angular:component": {
+      "type": "component"
+    },
+    "@schematics/angular:directive": {
+      "type": "directive"
+    },
+    "@schematics/angular:service": {
+      "type": "service"
+    },
+    "@schematics/angular:guard": {
+      "typeSeparator": "."
+    },
+    "@schematics/angular:interceptor": {
+      "typeSeparator": "."
+    },
+    "@schematics/angular:module": {
+      "typeSeparator": "."
+    },
+    "@schematics/angular:pipe": {
+      "typeSeparator": "."
+    },
+    "@schematics/angular:resolver": {
+      "typeSeparator": "."
+    }
   }
 }
